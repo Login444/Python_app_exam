@@ -1,4 +1,8 @@
+import csv
+import json
+
 from Note import Note
+
 
 class Application:
     """Класс модуля приложения"""
@@ -35,3 +39,19 @@ class Application:
             if note.get_noteId() == id:
                 self.noteList.remove(note)
 
+    def save_csv(self):
+        file_name = input('Введите название файла\n')
+        with open(f'{file_name}.csv', 'w', encoding="utf-8", newline="") as file_w:
+            fieldnames = ["id", "title", "body", "last update"]
+            writer = csv.DictWriter(file_w, fieldnames=fieldnames)
+            for note in self.noteList:
+                writer.writeheader()
+                writer.writerows(note.to_string())
+            print(f"{file_name}.csv file saved\n")
+
+    def save_json(self):
+        file_name = input('Введите название файла\n')
+        with open(f'{file_name}.json', 'w', encoding="utf-8", newline="") as file_w:
+            for note in self.noteList:
+                file_w.write(json.dumps(note.to_string()))
+            print(f"{file_name}.json file saved\n")

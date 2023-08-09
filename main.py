@@ -8,8 +8,34 @@
 # (команда, данные), можно делать как запрос команды с консоли и
 # последующим вводом данных, как-то ещё, на усмотрение студента.
 from Note import Note
-
-note1 = Note("Title", "Body")
-
+from app import Application
 
 
+def start_program():
+    program = Application()
+    work = True
+    while work:
+        action = input("1.Создать новую заметку\n"
+                       "2.Редактировать заметку\n"
+                       "3.Удалить заметку\n"
+                       "4.Сохранить в формате json\n"
+                       "5.Сохранить в формате csv\n"
+                       "6.Завершить работу\n")
+        match action:
+            case "1":
+                program.create_note()
+            case "2":
+                program.redact_note()
+            case "3":
+                program.delete_note()
+            case "4":
+                program.save_json()
+            case "5":
+                program.save_csv()
+            case "6":
+                work = False
+            case _:
+                print("Try again\n")
+
+
+start_program()
