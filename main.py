@@ -18,9 +18,11 @@ def start_program():
         action = input("1.Создать новую заметку\n"
                        "2.Редактировать заметку\n"
                        "3.Удалить заметку\n"
-                       "4.Сохранить в формате json\n"
-                       "5.Сохранить в формате csv\n"
-                       "6.Завершить работу\n")
+                       "4.Посмотреть заметки\n"
+                       "5.Сохранить в формате json\n"
+                       "6.Сохранить в формате csv\n"
+                       "7.Прочитать заметку из файла\n"
+                       "8.Завершить работу\n")
         match action:
             case "1":
                 program.create_note()
@@ -29,10 +31,14 @@ def start_program():
             case "3":
                 program.delete_note()
             case "4":
-                program.save_json()
+                program.show_noteList()
             case "5":
-                program.save_csv()
+                program.save_json()
             case "6":
+                program.save_csv()
+            case "7":
+                program.read_file()
+            case "8":
                 work = False
             case _:
                 print("Try again\n")

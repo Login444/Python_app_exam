@@ -26,13 +26,20 @@ class Note:
     def get_updateTime(self):
         return self.updateTime
 
-    def set_title(self):
-        self.title = input("Пишите заголовок:\n")
+    def set_id(self, id):
+        self.noteId = id
+
+    def set_updateTime(self, updateTime):
+        self.updateTime = updateTime
+
+    def set_title(self, title):
+        self.title = title
         self.updateTime = datetime.datetime.now()
 
-    def set_body(self):
-        self.body = input("Пишите текст заметки:\n")
+    def set_body(self, body):
+        self.body = body
         self.updateTime = datetime.datetime.now()
 
     def to_string(self):
-        return str(self.noteId) + str(self.title) + str(self.body) + str(self.updateTime)
+        return ("id: " + str(self.noteId) + "; title: " + str(self.title) + "; body:" + str(self.body)
+                + "; last update: " + str(self.updateTime) + ";")
