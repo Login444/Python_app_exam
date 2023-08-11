@@ -1,8 +1,10 @@
 import datetime
+from itertools import count
 
 
 class Note:
     """Класс заметок"""
+    noteIdCounter = count(1)
     noteId = 0
     title = ''
     body = ''
@@ -11,7 +13,7 @@ class Note:
     def __init__(self, title, body):
         self.title = title
         self.body = body
-        Note.noteId += 1
+        self.noteId = next(self.noteIdCounter)
         self.updateTime = datetime.datetime.now()
 
     def get_title(self):

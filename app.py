@@ -16,11 +16,11 @@ class Application:
         self.noteList.append(note)
         return self.noteList
 
-    # методы редактирования и удаления работают не корректно, найди причину
+
     def redact_note(self):
         i = input("Укажите id заметки, которую хотите редактировать:\n")
         for note in self.noteList:
-            if note.get_noteId() == i:
+            if note.get_noteId() == int(i):
                 choice = input("Укажите что хотите изменить:\n"
                                "1.Заголовок\n"
                                "2.Текст заметки\n")
@@ -32,14 +32,12 @@ class Application:
                     case _:
                         print("Попробуйте еще раз!")
 
-    # возможно стоит делать не список а словарь, где id ,будет ключом, а остальное значением
+
     def delete_note(self):
+        i = input("Укажите id заметки, которую хотите удалить:\n")
         for note in self.noteList:
-            print(note)
-        id = input("Укажите id заметки, которую хотите удалить:\n")
-        for note in self.noteList:
-            if note.get_noteId() == id:
-                self.noteList.pop()
+            if note.get_noteId() == int(i):
+                self.noteList.remove(note)
 
     def show_noteList(self):
         for note in self.noteList:
